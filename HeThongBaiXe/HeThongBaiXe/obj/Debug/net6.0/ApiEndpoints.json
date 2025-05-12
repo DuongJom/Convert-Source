@@ -1,0 +1,375 @@
+[
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.AdminController",
+    "Method": "GetBangPhiList",
+    "RelativePath": "api/Admin/bang-phi-gui-xe",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.AdminController",
+    "Method": "CreateBangPhi",
+    "RelativePath": "api/Admin/bang-phi-gui-xe",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "HeThongBaiXe.Models.BangPhiGuiXe",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.AdminController",
+    "Method": "GetBangPhiById",
+    "RelativePath": "api/Admin/bang-phi-gui-xe/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.AdminController",
+    "Method": "UpdateBangPhi",
+    "RelativePath": "api/Admin/bang-phi-gui-xe/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "data",
+        "Type": "HeThongBaiXe.Models.BangPhiGuiXe",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.AdminController",
+    "Method": "GetChoDeXeList",
+    "RelativePath": "api/Admin/cho-de-xe",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "trangThai",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.AdminController",
+    "Method": "CreateChoDeXe",
+    "RelativePath": "api/Admin/cho-de-xe",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "choDeXe",
+        "Type": "HeThongBaiXe.Models.ChoDeXe",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.AdminController",
+    "Method": "GetChoDeXeById",
+    "RelativePath": "api/Admin/cho-de-xe/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.AdminController",
+    "Method": "UpdateChoDeXe",
+    "RelativePath": "api/Admin/cho-de-xe/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "choDeXe",
+        "Type": "HeThongBaiXe.Models.ChoDeXe",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.AdminController",
+    "Method": "DuyetLayXe",
+    "RelativePath": "api/Admin/duyet-lay-xe/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.AdminController",
+    "Method": "GetLichSuGuiXe",
+    "RelativePath": "api/Admin/lich-su-gui-xe",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.AdminController",
+    "Method": "Login",
+    "RelativePath": "api/Admin/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginModel",
+        "Type": "HeThongBaiXe.DTOs.TaiKhoanLoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.AdminController",
+    "Method": "Register",
+    "RelativePath": "api/Admin/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "HeThongBaiXe.Models.TaiKhoan",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.AdminController",
+    "Method": "ThongKe",
+    "RelativePath": "api/Admin/thong-ke",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "kieuThongKe",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ngay",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "thang",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "nam",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.AdminController",
+    "Method": "GetYeuCauDuyet",
+    "RelativePath": "api/Admin/yeu-cau-duyet",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.HomeController",
+    "Method": "ChoDeTrong",
+    "RelativePath": "api/chodetrong",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.HomeController",
+    "Method": "DangKyXe",
+    "RelativePath": "api/dangkyxe",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "HeThongBaiXe.Models.PhuongTien",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.HomeController",
+    "Method": "DanhSachGuiXe",
+    "RelativePath": "api/danhsachguixe",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.HomeController",
+    "Method": "DanhSachXe",
+    "RelativePath": "api/danhsachxe",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.HomeController",
+    "Method": "GuiXe",
+    "RelativePath": "api/guixe",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "HeThongBaiXe.DTOs.GuiXeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.HomeController",
+    "Method": "LayXe",
+    "RelativePath": "api/layxe/{chiTietGuiXeId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "chiTietGuiXeId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.HomeController",
+    "Method": "Login",
+    "RelativePath": "api/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "HeThongBaiXe.DTOs.TaiKhoanLoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.HomeController",
+    "Method": "Register",
+    "RelativePath": "api/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "HeThongBaiXe.Models.TaiKhoan",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.HomeController",
+    "Method": "ThanhToan",
+    "RelativePath": "api/thanhtoan",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "HeThongBaiXe.DTOs.ThanhToanDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.HomeController",
+    "Method": "ThanhToan",
+    "RelativePath": "api/thanhtoan/{chiTietGuiXeId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "chiTietGuiXeId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
