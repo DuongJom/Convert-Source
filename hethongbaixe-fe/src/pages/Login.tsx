@@ -14,9 +14,6 @@ const Login: React.FC<LoginProps> = ({ setUsername }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-        console.log("tenDangNhap: " + tenDangNhap);
-        console.log("matKhau: " + matKhau);
-        
       const response = await fetch('https://localhost:7537/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -24,13 +21,12 @@ const Login: React.FC<LoginProps> = ({ setUsername }) => {
       });
 
       if (!response.ok) {
-        throw new Error('Đăng nhập thất bại');
+        throw new Error('Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.');
       }
 
       const data = await response.json();
-      console.log("Token: " + data.accessToken);
       localStorage.setItem('token', JSON.stringify(data.accessToken));
-      //setUsername(data.tenDangNhap);
+      setUsername(tenDangNhap);
       navigate('/home');
     } catch (err: any) {
       setError(err.message);
@@ -38,33 +34,58 @@ const Login: React.FC<LoginProps> = ({ setUsername }) => {
   };
 
   return (
-    <div className="row justify-content-center">
-      <div className="col-md-6">
-        <h2>Đăng nhập</h2>
-        {error && <div className="alert alert-danger">{error}</div>}
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label className="form-label">Tên đăng nhập</label>
-            <input
-              type="text"
-              className="form-control"
-              value={tenDangNhap}
-              onChange={(e) => setTenDangNhap(e.target.value)}
-              required
-            />
+    <div className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6 col-lg-5">
+          <div className="card shadow rounded-4">
+            <div className="card-body p-4">
+              <h3 className="card-title text-center mb-4">Đăng nhập</h3>
+
+              {error && <div className="alert alert-danger">{error}</div>}
+
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label htmlFor="tenDangNhap" className="form-label">Tên đăng nhập</label>
+                  <input
+                    type="text"
+                    id="tenDangNhap"
+                    className="form-control"
+                    value={tenDangNhap}
+                    onChange={(e) => setTenDangNhap(e.target.value)}
+                    required
+                    placeholder="Nhập tên đăng nhập"
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="matKhau" className="form-label">Mật khẩu</label>
+                  <input
+                    type="password"
+                    id="matKhau"
+                    className="form-control"
+                    value={matKhau}
+                    onChange={(e) => setMatKhau(e.target.value)}
+                    required
+                    placeholder="Nhập mật khẩu"
+                  />
+                </div>
+
+                <div className="d-grid gap-2">
+                  <button type="submit" className="btn btn-primary btn-block">
+                    Đăng nhập
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-secondary btn-block"
+                    onClick={() => navigate('/register')}
+                  >
+                    Chưa có tài khoản? Đăng ký
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
-          <div className="mb-3">
-            <label className="form-label">Mật khẩu</label>
-            <input
-              type="password"
-              className="form-control"
-              value={matKhau}
-              onChange={(e) => setMatKhau(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit" className="btn btn-primary">Đăng nhập</button>
-        </form>
+        </div>
       </div>
     </div>
   );

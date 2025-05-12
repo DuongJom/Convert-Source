@@ -39,9 +39,6 @@ namespace HeThongBaiXe.Controllers
             if (user == null)
                 return Unauthorized("Sai tên đăng nhập hoặc mật khẩu");
 
-            if (user.Role != "KhachHang")
-                return Forbid("Bạn không có quyền truy cập");
-
             var token = _jwtService.GenerateToken(user.Id.ToString(), user.Role);
             return Ok(new { accessToken = token});
         }

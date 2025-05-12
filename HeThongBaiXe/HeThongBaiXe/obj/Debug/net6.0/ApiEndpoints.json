@@ -159,38 +159,6 @@
   },
   {
     "ContainingType": "HeThongBaiXe.Controllers.AdminController",
-    "Method": "Login",
-    "RelativePath": "api/Admin/login",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "loginModel",
-        "Type": "HeThongBaiXe.DTOs.TaiKhoanLoginDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HeThongBaiXe.Controllers.AdminController",
-    "Method": "Register",
-    "RelativePath": "api/Admin/register",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "model",
-        "Type": "HeThongBaiXe.Models.TaiKhoan",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HeThongBaiXe.Controllers.AdminController",
     "Method": "ThongKe",
     "RelativePath": "api/Admin/thong-ke",
     "HttpMethod": "POST",

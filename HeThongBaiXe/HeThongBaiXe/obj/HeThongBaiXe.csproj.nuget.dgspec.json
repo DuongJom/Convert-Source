@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Support\\projectdoan\\Source\\HeThongBaiXe\\HeThongBaiXe\\HeThongBaiXe.csproj": {}
+    "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\HeThongBaiXe.csproj": {}
   },
   "projects": {
-    "D:\\Support\\projectdoan\\Source\\HeThongBaiXe\\HeThongBaiXe\\HeThongBaiXe.csproj": {
+    "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\HeThongBaiXe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Support\\projectdoan\\Source\\HeThongBaiXe\\HeThongBaiXe\\HeThongBaiXe.csproj",
+        "projectUniqueName": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\HeThongBaiXe.csproj",
         "projectName": "HeThongBaiXe",
-        "projectPath": "D:\\Support\\projectdoan\\Source\\HeThongBaiXe\\HeThongBaiXe\\HeThongBaiXe.csproj",
+        "projectPath": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\HeThongBaiXe.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\Support\\projectdoan\\Source\\HeThongBaiXe\\HeThongBaiXe\\obj\\",
+        "outputPath": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

@@ -97,29 +97,6 @@ namespace HeThongBaiXe.Controllers
             return Ok();
         }
 
-        [AllowAnonymous]
-        [HttpPost("login")]
-        public IActionResult Login([FromBody] TaiKhoanLoginDto loginModel)
-        {
-            var user = _taikhoanService.checkLogin(loginModel.TenDangNhap, loginModel.MatKhau);
-            if (user == null)
-                return Unauthorized("Sai thông tin đăng nhập!");
-
-            var token = _jwtService.GenerateToken(user.Id.ToString(), user.Role);
-            return Ok(token);
-        }
-
-        [AllowAnonymous]
-        [HttpPost("register")]
-        public IActionResult Register([FromBody] TaiKhoan model)
-        {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-            if (_taikhoanService.IsUserNameExist(model.TenDangNhap))
-                return BadRequest("Tên đăng nhập đã tồn tại!");
-            _taikhoanService.insertTaiKhoan(model);
-            return Ok();
-        }
-
         [HttpGet("lich-su-gui-xe")]
         public IActionResult GetLichSuGuiXe()
         {
