@@ -5,9 +5,10 @@ namespace HeThongBaiXe.Services
 {
     public interface IBangPhiGuiXeService
     {
-        void Save();
-        void insertBangPhiGuiXe(BangPhiGuiXe BangPhiGuiXe);
-        void updateBangPhiGuiXe(int id);
+        Task Save();
+        Task insertBangPhiGuiXe(BangPhiGuiXe BangPhiGuiXe);
+        Task updateBangPhiGuiXe(int id, BangPhiGuiXe bangPhiGuiXe);
+        Task deleteBangPhiGuiXe(int id);
         BangPhiGuiXe getBangPhiGuiXeById(int id);
         IEnumerable<BangPhiGuiXe> getAll();
     }
@@ -24,24 +25,27 @@ namespace HeThongBaiXe.Services
             return _unitOfWork.BangPhiGuiXeRepository.GetById(id);
         }
 
-        public void insertBangPhiGuiXe(BangPhiGuiXe BangPhiGuiXe)
+        public async Task insertBangPhiGuiXe(BangPhiGuiXe BangPhiGuiXe)
         {
             _unitOfWork.BangPhiGuiXeRepository.Add(BangPhiGuiXe);
-            Save();
+            await Save();
         }
 
-        public void Save()
+        public async Task Save()
         {
-            _unitOfWork.SaveChanges();
+            await _unitOfWork.SaveChangesAsync();
         }
 
-        public void updateBangPhiGuiXe(int id)
+        public async Task updateBangPhiGuiXe(int id, BangPhiGuiXe bangPhiGuiXe)
         {
-            var BangPhiGuiXe = _unitOfWork.BangPhiGuiXeRepository.GetById(id);
-            if (BangPhiGuiXe != null)
+            var _BangPhiGuiXe = _unitOfWork.BangPhiGuiXeRepository.GetById(id);
+            if (_BangPhiGuiXe != null)
             {
-                _unitOfWork.BangPhiGuiXeRepository.Update(BangPhiGuiXe);
-                Save();
+                _BangPhiGuiXe.LoaiXe = bangPhiGuiXe.LoaiXe;
+                _BangPhiGuiXe.LoaiGui = bangPhiGuiXe.LoaiGui;
+                _BangPhiGuiXe.GiaGui = bangPhiGuiXe.GiaGui;
+                _unitOfWork.BangPhiGuiXeRepository.Update(_BangPhiGuiXe);
+                await Save();
             }
             else
             {
@@ -51,6 +55,20 @@ namespace HeThongBaiXe.Services
         public IEnumerable<BangPhiGuiXe> getAll()
         {
             return _unitOfWork.BangPhiGuiXeRepository.GetAll();
+        }
+
+        public async Task deleteBangPhiGuiXe(int id)
+        {
+            var BangPhiGuiXe = _unitOfWork.BangPhiGuiXeRepository.GetById(id);
+            if (BangPhiGuiXe != null)
+            {
+                _unitOfWork.BangPhiGuiXeRepository.Delete(BangPhiGuiXe);
+                await Save();
+            }
+            else
+            {
+                throw new Exception("Chỗ để xe không tồn tại.");
+            }
         }
     }
 }

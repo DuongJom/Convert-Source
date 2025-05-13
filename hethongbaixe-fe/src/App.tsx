@@ -19,6 +19,7 @@ import ThanhToan from './pages/ThanhToan';
 import ListChoDeXe from './pages/ListChoDeXe';
 import CreateChoDeXe from './pages/CreateChoDeXe';
 import EditChoDeXe from './pages/EditChoDeXe';
+import ListBangPhiGuiXe from './pages/ListBangPhiGuiXe';
 
 const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const isAuthenticated = !!localStorage.getItem('token');
@@ -126,6 +127,14 @@ const AppContent: React.FC = () => {
               element={
                 <PrivateRoute>
                   <EditChoDeXe />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path='/admin/bang-phi-gui-xe'
+              element={
+                <PrivateRoute>
+                  <ListBangPhiGuiXe />
                 </PrivateRoute>
               }
             />

@@ -75,7 +75,7 @@ namespace HeThongBaiXe.Controllers
         public IActionResult GetBangPhiList()
         {
             var list = _bangPhiGuiXeService.getAll();
-            return Ok(list);
+            return Ok(new { listPhiGuiXe = list });
         }
 
         [HttpGet("bang-phi-gui-xe/{id}")]
@@ -99,7 +99,14 @@ namespace HeThongBaiXe.Controllers
         {
             if (id != data.Id) return BadRequest();
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            _bangPhiGuiXeService.updateBangPhiGuiXe(id);
+            _bangPhiGuiXeService.updateBangPhiGuiXe(id, data);
+            return Ok();
+        }
+
+        [HttpDelete("bang-phi-gui-xe/{id}")]
+        public IActionResult DeleteBangPhi(int id)
+        {
+            _bangPhiGuiXeService.deleteBangPhiGuiXe(id);
             return Ok();
         }
 

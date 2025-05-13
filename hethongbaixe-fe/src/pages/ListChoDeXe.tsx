@@ -63,7 +63,7 @@ const ChoDeXeList: React.FC = () => {
           <option value="Đã đầy">Đã đầy</option>
         </select>
         <div>
-          <a href="/admin/tao-cho-de-xe" className="btn btn-success">Create New</a>
+          <a href="/admin/tao-cho-de-xe" className="btn btn-success">+ Tạo mới</a>
         </div>
       </div>
 

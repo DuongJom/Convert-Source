@@ -64,6 +64,22 @@
   },
   {
     "ContainingType": "HeThongBaiXe.Controllers.AdminController",
+    "Method": "DeleteBangPhi",
+    "RelativePath": "api/Admin/bang-phi-gui-xe/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HeThongBaiXe.Controllers.AdminController",
     "Method": "GetChoDeXeList",
     "RelativePath": "api/Admin/cho-de-xe",
     "HttpMethod": "GET",
