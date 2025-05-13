@@ -6,12 +6,12 @@ namespace HeThongBaiXe.Services
 {
     public interface IChiTietGuiXeService
     {
-        void GuiXe(int phuongTienId, int choDeXeId);
+        Task GuiXe(int phuongTienId, int choDeXeId);
         List<ChiTietGuiXe> GetDanhSachGuiXeTheoTaiKhoan(int taiKhoanId);
-        void LayXe(int chiTietGuiXeId);
+        Task LayXe(int chiTietGuiXeId);
         List<ChiTietGuiXe> GetAllLichSuGuiXe();
-        public void TaoYeuCauLayXe(int chiTietGuiXeId, string phuongThucThanhToan);
-        public void DuyetLayXe(int chiTietGuiXeId);
+        public Task TaoYeuCauLayXe(int chiTietGuiXeId, string phuongThucThanhToan);
+        public Task DuyetLayXe(int chiTietGuiXeId);
         ChiTietGuiXe GetById(int id);
         double ThongKeTheoNgay(DateTime ngay);
         double ThongKeTheoThang(int thang, int nam);
@@ -28,7 +28,7 @@ namespace HeThongBaiXe.Services
             _context = context;
         }
 
-        public void GuiXe(int phuongTienId, int choDeXeId)
+        public async Task GuiXe(int phuongTienId, int choDeXeId)
         {
             // Tạo bản ghi gửi xe mới
             var chiTietGuiXe = new ChiTietGuiXe
@@ -51,7 +51,7 @@ namespace HeThongBaiXe.Services
                 _unitOfWork.ChoDeXeRepository.Update(choDeXe);
             }
 
-            _unitOfWork.SaveChanges();
+            await _unitOfWork.SaveChangesAsync();
         }
         public List<ChiTietGuiXe> GetDanhSachGuiXeTheoTaiKhoan(int taiKhoanId)
         {
@@ -63,18 +63,19 @@ namespace HeThongBaiXe.Services
 
             var danhSachGuiXe = _unitOfWork.ChiTietGuiXeRepository
                                 .GetAll()
-                                .Where(x => danhSachXe.Contains(x.PhuongTienId))
+                                .Where(x => danhSachXe.Contains(x.PhuongTienId) && (x.TrangThai == "ChuaLay" || string.IsNullOrWhiteSpace(x.TrangThai)))
                                 .ToList();
 
             return danhSachGuiXe;
         }
 
-        public void LayXe(int chiTietGuiXeId)
+        public async Task LayXe(int chiTietGuiXeId)
         {
             var chiTiet = _unitOfWork.ChiTietGuiXeRepository.GetById(chiTietGuiXeId);
-            if (chiTiet != null && (chiTiet.NgayRa == null || chiTiet.NgayRa == DateTime.MinValue))
+            if (chiTiet != null)
             {
                 chiTiet.NgayRa = DateTime.Now;
+                chiTiet.TrangThai = "DaLay";
                 _unitOfWork.ChiTietGuiXeRepository.Update(chiTiet);
 
                 // Cập nhật trạng thái chỗ đỗ xe
@@ -85,14 +86,14 @@ namespace HeThongBaiXe.Services
                     _unitOfWork.ChoDeXeRepository.Update(choDeXe);
                 }
 
-                _unitOfWork.SaveChanges();
+               await _unitOfWork.SaveChangesAsync();
             }
         }
         public List<ChiTietGuiXe> GetAllLichSuGuiXe()
         {
             return _unitOfWork.ChiTietGuiXeRepository.GetAll().ToList();
         }
-        public void TaoYeuCauLayXe(int chiTietGuiXeId, string phuongThucThanhToan)
+        public async Task TaoYeuCauLayXe(int chiTietGuiXeId, string phuongThucThanhToan)
         {
             var chiTiet = _unitOfWork.ChiTietGuiXeRepository.GetById(chiTietGuiXeId);
             if (chiTiet != null)
@@ -102,10 +103,10 @@ namespace HeThongBaiXe.Services
                 chiTiet.NgayRa = DateTime.Now;
 
                 _unitOfWork.ChiTietGuiXeRepository.Update(chiTiet);
-                _unitOfWork.SaveChanges();
+                await _unitOfWork.SaveChangesAsync();
             }
         }
-        public void DuyetLayXe(int chiTietGuiXeId)
+        public async Task DuyetLayXe(int chiTietGuiXeId)
         {
             var chiTiet = _unitOfWork.ChiTietGuiXeRepository.GetById(chiTietGuiXeId);
             if (chiTiet != null && chiTiet.TrangThai == "ChoDuyet")
@@ -120,7 +121,7 @@ namespace HeThongBaiXe.Services
                 }
 
                 _unitOfWork.ChiTietGuiXeRepository.Update(chiTiet);
-                _unitOfWork.SaveChanges();
+                await _unitOfWork.SaveChangesAsync();
             }
         }
         public ChiTietGuiXe GetById(int id)

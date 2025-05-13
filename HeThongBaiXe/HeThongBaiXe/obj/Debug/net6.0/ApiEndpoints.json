@@ -201,7 +201,7 @@
   {
     "ContainingType": "HeThongBaiXe.Controllers.HomeController",
     "Method": "ChoDeTrong",
-    "RelativePath": "api/chodetrong",
+    "RelativePath": "api/cho-de-trong",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -211,14 +211,14 @@
   {
     "ContainingType": "HeThongBaiXe.Controllers.HomeController",
     "Method": "DangKyXe",
-    "RelativePath": "api/dangkyxe",
+    "RelativePath": "api/dang-ky-xe",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "model",
-        "Type": "HeThongBaiXe.Models.PhuongTien",
+        "Type": "HeThongBaiXe.DTOs.DangKyXeDto",
         "IsRequired": true
       }
     ],
@@ -227,7 +227,7 @@
   {
     "ContainingType": "HeThongBaiXe.Controllers.HomeController",
     "Method": "DanhSachGuiXe",
-    "RelativePath": "api/danhsachguixe",
+    "RelativePath": "api/danh-sach-gui-xe",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -237,7 +237,7 @@
   {
     "ContainingType": "HeThongBaiXe.Controllers.HomeController",
     "Method": "DanhSachXe",
-    "RelativePath": "api/danhsachxe",
+    "RelativePath": "api/danh-sach-xe",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -247,7 +247,7 @@
   {
     "ContainingType": "HeThongBaiXe.Controllers.HomeController",
     "Method": "GuiXe",
-    "RelativePath": "api/guixe",
+    "RelativePath": "api/gui-xe",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -263,7 +263,7 @@
   {
     "ContainingType": "HeThongBaiXe.Controllers.HomeController",
     "Method": "LayXe",
-    "RelativePath": "api/layxe/{chiTietGuiXeId}",
+    "RelativePath": "api/lay-xe/{chiTietGuiXeId}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -311,7 +311,7 @@
   {
     "ContainingType": "HeThongBaiXe.Controllers.HomeController",
     "Method": "ThanhToan",
-    "RelativePath": "api/thanhtoan",
+    "RelativePath": "api/thanh-toan",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -327,7 +327,7 @@
   {
     "ContainingType": "HeThongBaiXe.Controllers.HomeController",
     "Method": "ThanhToan",
-    "RelativePath": "api/thanhtoan/{chiTietGuiXeId}",
+    "RelativePath": "api/thanh-toan/{chiTietGuiXeId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

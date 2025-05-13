@@ -37,7 +37,7 @@ namespace HeThongBaiXe.Controllers
         {
             var user = _taiKhoanService.checkLogin(dto.TenDangNhap, dto.MatKhau);
             if (user == null)
-                return Unauthorized("Sai tên đăng nhập hoặc mật khẩu");
+                return Unauthorized(new { message = "Sai tên đăng nhập hoặc mật khẩu" });
 
             var token = _jwtService.GenerateToken(user.Id.ToString(), user.Role);
             return Ok(new { accessToken = token});
@@ -49,7 +49,7 @@ namespace HeThongBaiXe.Controllers
         public IActionResult Register([FromBody] TaiKhoan model)
         {
             if (_taiKhoanService.IsUserNameExist(model.TenDangNhap))
-                return Conflict("Tên đăng nhập đã tồn tại");
+                return Conflict(new { message = "Tên đăng nhập đã tồn tại" });
 
             model.Role = "KhachHang";
             _taiKhoanService.insertTaiKhoan(model);
@@ -59,99 +59,108 @@ namespace HeThongBaiXe.Controllers
         }
 
         // ĐĂNG KÝ XE
-        [HttpPost("dangkyxe")]
-        [Authorize(Roles = "KhachHang")]
-        public IActionResult DangKyXe([FromBody] PhuongTien model)
+        [HttpPost("dang-ky-xe")]
+        //[Authorize(Roles = "KhachHang")]
+        public IActionResult DangKyXe([FromBody] DangKyXeDto model)
         {
-            var userId = GetUserIdFromClaims();
+            var userId = _jwtService.GetUserIdFromClaims(User);
             if (userId == null) return Unauthorized();
 
-            model.TaiKhoanId = userId.Value;
-            _phuongTienService.DangKyPhuongTien(model);
-            return Ok("Đăng ký xe thành công");
+            var parsedUserId = default(int);
+            var _ = int.TryParse(userId, out parsedUserId);
+
+            var phuongTien = new PhuongTien
+            {
+                BienSo = model.BienSo,
+                LoaiXe = model.LoaiXe,
+                HoTenChuXe = model.HoTenChuXe,
+                Sdt = model.Sdt,
+                CCCD = model.CCCD,
+                MaCaVet = model.MaCaVet,
+                TaiKhoanId = parsedUserId
+            };
+            _phuongTienService.DangKyPhuongTien(phuongTien);
+            return Ok(new { message = "Đăng ký xe thành công" });
         }
 
         // CHỖ ĐỖ TRỐNG
-        [HttpGet("chodetrong")]
-        [Authorize(Roles = "KhachHang")]
+        [HttpGet("cho-de-trong")]
+        //[Authorize(Roles = "KhachHang")]
         public IActionResult ChoDeTrong()
         {
-            var userId = GetUserIdFromClaims();
+            var userId = _jwtService.GetUserIdFromClaims(User);
             if (userId == null) return Unauthorized();
 
+            var parsedUserId = default(int);
+            var _ = int.TryParse(userId, out parsedUserId);
+
             var danhSachCho = _choDeXeService.GetChoDeXeConTrong();
-            var danhSachXe = _phuongTienService.GetPhuongTienByTaiKhoanId(userId.Value);
+            var danhSachXe = _phuongTienService.GetPhuongTienByTaiKhoanId(parsedUserId);
 
             return Ok(new { DanhSachCho = danhSachCho, DanhSachXe = danhSachXe });
         }
 
         // GỬI XE
-        [HttpPost("guixe")]
+        [HttpPost("gui-xe")]
         [Authorize(Roles = "KhachHang")]
         public IActionResult GuiXe([FromBody] GuiXeDto dto)
         {
             _chiTietGuiXeService.GuiXe(dto.PhuongTienId, dto.ChoDeXeId);
-            return Ok("Gửi xe thành công");
+            return Ok(new { message = "Gửi xe thành công" });
         }
 
         // DANH SÁCH XE
-        [HttpGet("danhsachxe")]
-        [Authorize(Roles = "KhachHang")]
+        [HttpGet("danh-sach-xe")]
         public IActionResult DanhSachXe()
         {
-            var userId = GetUserIdFromClaims();
+            var userId = _jwtService.GetUserIdFromClaims(User);
             if (userId == null) return Unauthorized();
 
-            var danhSachXe = _phuongTienService.GetPhuongTienByTaiKhoanId(userId.Value);
-            return Ok(danhSachXe);
+            var parsedUserId = default(int);
+            var _ = int.TryParse(userId, out parsedUserId);
+
+            var danhSachXe = _phuongTienService.GetPhuongTienByTaiKhoanId(parsedUserId);
+            return Ok(new { data = danhSachXe });
         }
 
         // DANH SÁCH GỬI XE
-        [HttpGet("danhsachguixe")]
-        [Authorize(Roles = "KhachHang")]
+        [HttpGet("danh-sach-gui-xe")]
         public IActionResult DanhSachGuiXe()
         {
-            var userId = GetUserIdFromClaims();
+            var userId = _jwtService.GetUserIdFromClaims(User);
             if (userId == null) return Unauthorized();
 
-            var danhSachGuiXe = _chiTietGuiXeService.GetDanhSachGuiXeTheoTaiKhoan(userId.Value);
-            return Ok(danhSachGuiXe);
+            var parsedUserId = default(int);
+            var _ = int.TryParse(userId, out parsedUserId);
+
+            var danhSachGuiXe = _chiTietGuiXeService.GetDanhSachGuiXeTheoTaiKhoan(parsedUserId);
+            return Ok(new { danhSachXe = danhSachGuiXe });
         }
 
         // LẤY XE
-        [HttpPost("layxe/{chiTietGuiXeId}")]
-        [Authorize(Roles = "KhachHang")]
+        [HttpPost("lay-xe/{chiTietGuiXeId}")]
         public IActionResult LayXe(int chiTietGuiXeId)
         {
             _chiTietGuiXeService.LayXe(chiTietGuiXeId);
-            return Ok("Đã lấy xe");
+            return Ok(new { message = "Đã lấy xe" });
         }
 
         // XEM THÔNG TIN THANH TOÁN
-        [HttpGet("thanhtoan/{chiTietGuiXeId}")]
-        [Authorize(Roles = "KhachHang")]
+        [HttpGet("thanh-toan/{chiTietGuiXeId}")]
         public IActionResult ThanhToan(int chiTietGuiXeId)
         {
             var ct = _chiTietGuiXeService.GetById(chiTietGuiXeId);
-            if (ct == null) return NotFound("Không tìm thấy dữ liệu");
+            if (ct == null) return NotFound(new { message = "Không tìm thấy dữ liệu" });
             return Ok(ct);
         }
 
         // THỰC HIỆN THANH TOÁN
-        [HttpPost("thanhtoan")]
+        [HttpPost("thanh-toan")]
         [Authorize(Roles = "KhachHang")]
         public IActionResult ThanhToan([FromBody] ThanhToanDto dto)
         {
             _chiTietGuiXeService.TaoYeuCauLayXe(dto.ChiTietGuiXeId, dto.PhuongThuc);
-            return Ok("Yêu cầu lấy xe đã được gửi");
-        }
-
-        // Helper method: lấy userId từ JWT claims
-        private int? GetUserIdFromClaims()
-        {
-            var claim = User.Claims.FirstOrDefault(x => x.Type == "UserId");
-            if (claim == null) return null;
-            return int.TryParse(claim.Value, out var id) ? id : null;
+            return Ok(new { message = "Yêu cầu lấy xe đã được gửi" });
         }
     }
 }

@@ -90,6 +90,12 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("KhachHangPolicy", policy => policy.RequireRole("KhachHang"));
+});
+
 // Đăng ký DI Services
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IChoDeXeService, ChoDeXeService>();

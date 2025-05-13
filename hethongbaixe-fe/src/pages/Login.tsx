@@ -27,6 +27,7 @@ const Login: React.FC<LoginProps> = ({ setUsername }) => {
       const data = await response.json();
       localStorage.setItem('token', JSON.stringify(data.accessToken));
       setUsername(tenDangNhap);
+      localStorage.setItem('username', JSON.stringify(tenDangNhap));
       navigate('/home');
     } catch (err: any) {
       setError(err.message);
@@ -34,7 +35,8 @@ const Login: React.FC<LoginProps> = ({ setUsername }) => {
   };
 
   return (
-    <div className="container mt-5">
+  <div className="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+    <div className="container">
       <div className="row justify-content-center">
         <div className="col-md-6 col-lg-5">
           <div className="card shadow rounded-4">
@@ -88,7 +90,8 @@ const Login: React.FC<LoginProps> = ({ setUsername }) => {
         </div>
       </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default Login;

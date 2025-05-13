@@ -5,12 +5,12 @@ namespace HeThongBaiXe.Services
 {
     public interface IPhuongTienService
     {
-        void Save();
-        void insertPhuongTien(PhuongTien PhuongTien);
-        void updatePhuongTien(int id);
+        Task Save();
+        Task insertPhuongTien(PhuongTien PhuongTien);
+        Task updatePhuongTien(int id);
         PhuongTien getPhuongTienById(int id);
 
-        void DangKyPhuongTien(PhuongTien phuongTien);
+        Task DangKyPhuongTien(PhuongTien phuongTien);
         List<PhuongTien> GetPhuongTienByTaiKhoanId(int taiKhoanId);
     }
     public class PhuongTienService : IPhuongTienService
@@ -20,10 +20,10 @@ namespace HeThongBaiXe.Services
         {
             _unitOfWork = unitOfWork;
         }
-        public void DangKyPhuongTien(PhuongTien phuongTien)
+        public async Task DangKyPhuongTien(PhuongTien phuongTien)
         {
             _unitOfWork.PhuongTienRepository.Add(phuongTien);
-            _unitOfWork.SaveChanges();
+            await _unitOfWork.SaveChangesAsync();
         }
 
         public List<PhuongTien> GetPhuongTienByTaiKhoanId(int taiKhoanId)
@@ -38,24 +38,24 @@ namespace HeThongBaiXe.Services
             return _unitOfWork.PhuongTienRepository.GetById(id);
         }
 
-        public void insertPhuongTien(PhuongTien PhuongTien)
+        public async Task insertPhuongTien(PhuongTien PhuongTien)
         {
             _unitOfWork.PhuongTienRepository.Add(PhuongTien);
-            Save();
+            await Save();
         }
 
-        public void Save()
+        public async Task Save()
         {
-            _unitOfWork.SaveChanges();
+            await _unitOfWork.SaveChangesAsync();
         }
 
-        public void updatePhuongTien(int id)
+        public async Task updatePhuongTien(int id)
         {
             var PhuongTien = _unitOfWork.PhuongTienRepository.GetById(id);
             if (PhuongTien != null)
             {
                 _unitOfWork.PhuongTienRepository.Update(PhuongTien);
-                Save();
+                await Save();
             }
             else
             {

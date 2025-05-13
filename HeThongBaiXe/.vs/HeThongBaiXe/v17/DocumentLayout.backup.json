@@ -7,12 +7,28 @@
       "RelativeMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|solutionrelative:hethongbaixe\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|d:\\github\\convert-source\\hethongbaixe\\hethongbaixe\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|solutionrelative:hethongbaixe\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|d:\\github\\convert-source\\hethongbaixe\\hethongbaixe\\models\\phuongtien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|solutionrelative:hethongbaixe\\models\\phuongtien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|d:\\github\\convert-source\\hethongbaixe\\hethongbaixe\\services\\phuongtienservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|solutionrelative:hethongbaixe\\services\\phuongtienservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|d:\\github\\convert-source\\hethongbaixe\\hethongbaixe\\data\\repositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|solutionrelative:hethongbaixe\\data\\repositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|d:\\github\\convert-source\\hethongbaixe\\hethongbaixe\\data\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|solutionrelative:hethongbaixe\\data\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|d:\\github\\convert-source\\hethongbaixe\\hethongbaixe\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|solutionrelative:hethongbaixe\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|d:\\github\\convert-source\\hethongbaixe\\hethongbaixe\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|solutionrelative:hethongbaixe\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 30,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,20 +66,72 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PhuongTien.cs",
+              "DocumentMoniker": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Models\\PhuongTien.cs",
+              "RelativeDocumentMoniker": "HeThongBaiXe\\Models\\PhuongTien.cs",
+              "ToolTip": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Models\\PhuongTien.cs",
+              "RelativeToolTip": "HeThongBaiXe\\Models\\PhuongTien.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T04:23:54.877Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RepositoryBase.cs",
+              "DocumentMoniker": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Data\\RepositoryBase.cs",
+              "RelativeDocumentMoniker": "HeThongBaiXe\\Data\\RepositoryBase.cs",
+              "ToolTip": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Data\\RepositoryBase.cs",
+              "RelativeToolTip": "HeThongBaiXe\\Data\\RepositoryBase.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAwwF4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T03:43:43.272Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Data\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "HeThongBaiXe\\Data\\UnitOfWork.cs",
+              "ToolTip": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Data\\UnitOfWork.cs",
+              "RelativeToolTip": "HeThongBaiXe\\Data\\UnitOfWork.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwCUAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T03:21:20.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PhuongTienService.cs",
+              "DocumentMoniker": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Services\\PhuongTienService.cs",
+              "RelativeDocumentMoniker": "HeThongBaiXe\\Services\\PhuongTienService.cs",
+              "ToolTip": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Services\\PhuongTienService.cs",
+              "RelativeToolTip": "HeThongBaiXe\\Services\\PhuongTienService.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAYwDkAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T03:15:48.183Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "HeThongBaiXe\\Controllers\\HomeController.cs",
               "ToolTip": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Controllers\\HomeController.cs",
               "RelativeToolTip": "HeThongBaiXe\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAArwC4AAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAAAHsAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-12T08:36:18.043Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "AdminController.cs",
               "DocumentMoniker": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "HeThongBaiXe\\Controllers\\AdminController.cs",
@@ -71,18 +139,17 @@
               "RelativeToolTip": "HeThongBaiXe\\Controllers\\AdminController.cs",
               "ViewState": "AgIAAF8AAAAAAAAAAAAUwGEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T08:34:35.719Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T08:34:35.719Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Program.cs",
               "RelativeDocumentMoniker": "HeThongBaiXe\\Program.cs",
               "ToolTip": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Program.cs",
               "RelativeToolTip": "HeThongBaiXe\\Program.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAkwDAAAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAkwGAAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-12T08:33:26.105Z"
             }

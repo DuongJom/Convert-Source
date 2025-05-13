@@ -18,17 +18,20 @@ namespace QLKS.Data
         public virtual void Add(T entity)
         {
             dbset.Add(entity);
+            _dbContext.SaveChanges();
         }
 
         public virtual void Update(T entity)
         {
             dbset.Attach(entity);
             _dbContext.Entry(entity).State = EntityState.Modified;
+            _dbContext.SaveChanges();
         }
 
         public virtual void Delete(T entity)
         {
             dbset.Remove(entity);
+            _dbContext.SaveChanges();
         }
 
         public virtual void Delete(Expression<Func<T, bool>> where)
@@ -36,6 +39,8 @@ namespace QLKS.Data
             IEnumerable<T> objects = dbset.Where<T>(where).AsEnumerable();
             foreach (T obj in objects)
                 dbset.Remove(obj);
+
+            _dbContext.SaveChanges();
         }
 
         public virtual int Count(Expression<Func<T, bool>> where)

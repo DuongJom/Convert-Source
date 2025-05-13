@@ -1,32 +1,101 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+  useNavigate,
+  useLocation,
+} from 'react-router-dom';
+import MainLayout from './components/MainLayout';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ChoDeXeList from './pages/ChoDeXeList';
+import DangKyPhuongTien from './pages/DangKyPhuongTien';
+import DanhSachGuiXe from './pages/DanhSachGuiXe';
+import DanhSachXe from './pages/DanhSachXe';
 
-const App: React.FC = () => {
+const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const isAuthenticated = !!localStorage.getItem('token');
+  return isAuthenticated ? <>{children}</> : <Navigate to="/" />;
+};
+
+const AppContent: React.FC = () => {
   const [username, setUsername] = useState<string | null>(localStorage.getItem('username') || null);
-  const navigate = useNavigate(); // Sử dụng useNavigate để điều hướng
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = () => {
     setUsername(null);
     localStorage.removeItem('token');
-    navigate('/'); // Điều hướng tới trang Login
+    localStorage.removeItem('username');
+    navigate('/'); // Redirect to login
   };
 
-  useEffect(() => {}, [username]);
+  useEffect(() => {
+    const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      setUsername(storedUsername.replace(/"/g, ''));
+    }
+  }, []);
+
+  const isAuthRoute = location.pathname === '/' || location.pathname === '/register';
 
   return (
     <>
-      <Navbar username={username} onLogout={handleLogout} />
-      <div className="container mt-4">
+      {isAuthRoute ? (
         <Routes>
           <Route path="/" element={<Login setUsername={setUsername} />} />
-          <Route path="/home" element={<Home />} />
           <Route path="/register" element={<Register />} />
         </Routes>
-      </div>
+      ) : (
+        <MainLayout username={username} onLogout={handleLogout}>
+          <Routes>
+            <Route
+              path="/home"
+              element={
+                <PrivateRoute>
+                  <Home />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/cho-do-trong"
+              element={
+                <PrivateRoute>
+                  <ChoDeXeList />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path='/dang-ky-xe'
+              element={
+                <PrivateRoute>
+                  <DangKyPhuongTien />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path='/danh-sach-xe'
+              element={
+                <PrivateRoute>
+                  <DanhSachXe />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path='/lich-su-gui-xe'
+              element={
+                <PrivateRoute>
+                  <DanhSachGuiXe />
+                </PrivateRoute>
+              }
+            />
+            {/* Add more authenticated routes here */}
+          </Routes>
+        </MainLayout>
+      )}
     </>
   );
 };
@@ -34,7 +103,7 @@ const App: React.FC = () => {
 const AppWrapper: React.FC = () => {
   return (
     <Router>
-      <App />
+      <AppContent />
     </Router>
   );
 };
