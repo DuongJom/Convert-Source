@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Sidebar: React.FC = () => {
-  const location = useLocation(); // để highlight mục đang active
+  const location = useLocation();
+  const [role, setRole] = useState<string | null>(null);
+
+  useEffect(() => {
+    const storedRole = localStorage.getItem('role');
+    setRole(storedRole);
+  }, []);
 
   const links = [
     { to: '/home', label: 'Trang chủ', icon: 'bi-house-door-fill' },
@@ -11,6 +17,14 @@ const Sidebar: React.FC = () => {
     { to: '/danh-sach-xe', label: 'Xe đã đăng ký', icon: 'bi-truck-front' },
     { to: '/lich-su-gui-xe', label: 'Lịch sử gửi xe', icon: 'bi-calendar-event' }
   ];
+
+  const adminLinks = [
+    { to: '/admin/danh-sach-cho-de-xe', label: 'Danh sách chỗ đỗ xe', icon: 'bi-list-check' },
+    { to: '/admin/tao-cho-de-xe', label: 'Tạo chỗ đỗ xe', icon: 'bi-plus-square' },
+    { to: '/admin/quan-ly-xe', label: 'Quản lý xe', icon: 'bi-car-front' }  
+  ];
+
+  const isAdmin = (role?.replace(/"/g, '') === "Admin");
 
   return (
     <div
@@ -24,7 +38,7 @@ const Sidebar: React.FC = () => {
       </div>
 
       <ul className="nav flex-column p-3">
-        {links.map(link => (
+        {(isAdmin ? adminLinks : links).map(link => (
           <li className="nav-item mb-2" key={link.to}>
             <Link
               to={link.to}

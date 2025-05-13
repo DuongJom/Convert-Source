@@ -16,6 +16,9 @@ import DangKyPhuongTien from './pages/DangKyPhuongTien';
 import DanhSachGuiXe from './pages/DanhSachGuiXe';
 import DanhSachXe from './pages/DanhSachXe';
 import ThanhToan from './pages/ThanhToan';
+import ListChoDeXe from './pages/ListChoDeXe';
+import CreateChoDeXe from './pages/CreateChoDeXe';
+import EditChoDeXe from './pages/EditChoDeXe';
 
 const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const isAuthenticated = !!localStorage.getItem('token');
@@ -31,6 +34,7 @@ const AppContent: React.FC = () => {
     setUsername(null);
     localStorage.removeItem('token');
     localStorage.removeItem('username');
+    localStorage.removeItem('role');
     navigate('/'); // Redirect to login
   };
 
@@ -98,6 +102,30 @@ const AppContent: React.FC = () => {
               element={
                 <PrivateRoute>
                   <ThanhToan />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path='/admin/danh-sach-cho-de-xe'
+              element={
+                <PrivateRoute>
+                  <ListChoDeXe />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path='/admin/tao-cho-de-xe'
+              element={
+                <PrivateRoute>
+                  <CreateChoDeXe />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path='/admin/cap-nhat-cho-de-xe/:id'
+              element={
+                <PrivateRoute>
+                  <EditChoDeXe />
                 </PrivateRoute>
               }
             />

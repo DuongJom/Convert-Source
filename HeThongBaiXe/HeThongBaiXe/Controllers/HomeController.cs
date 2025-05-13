@@ -40,7 +40,7 @@ namespace HeThongBaiXe.Controllers
                 return Unauthorized(new { message = "Sai tên đăng nhập hoặc mật khẩu" });
 
             var token = _jwtService.GenerateToken(user.Id.ToString(), user.Role);
-            return Ok(new { accessToken = token});
+            return Ok(new { accessToken = token, userData = user});
         }
 
         // REGISTER

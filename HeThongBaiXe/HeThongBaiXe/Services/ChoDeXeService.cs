@@ -5,9 +5,9 @@ namespace HeThongBaiXe.Services
 {
     public interface IChoDeXeService
     {
-        void Save();
-        void insertChoDeXe(ChoDeXe ChoDeXe);
-        void updateChoDeXe(int id);
+        Task Save();
+        Task insertChoDeXe(ChoDeXe ChoDeXe);
+        Task updateChoDeXe(int id, ChoDeXe choDeXe);
         ChoDeXe getChoDeXeById(int id);
         IEnumerable<ChoDeXe> getAll();
         List<ChoDeXe> GetChoDeXeConTrong();
@@ -32,24 +32,26 @@ namespace HeThongBaiXe.Services
             return _unitOfWork.ChoDeXeRepository.GetById(id);
         }
 
-        public void insertChoDeXe(ChoDeXe ChoDeXe)
+        public async Task insertChoDeXe(ChoDeXe ChoDeXe)
         {
             _unitOfWork.ChoDeXeRepository.Add(ChoDeXe);
-            Save();
+            await Save();
         }
 
-        public void Save()
+        public async Task Save()
         {
-            _unitOfWork.SaveChanges();
+            await _unitOfWork.SaveChangesAsync();
         }
 
-        public void updateChoDeXe(int id)
+        public async Task updateChoDeXe(int id, ChoDeXe choDeXe)
         {
             var ChoDeXe = _unitOfWork.ChoDeXeRepository.GetById(id);
             if (ChoDeXe != null)
             {
+                ChoDeXe.ViTri = choDeXe.ViTri;
+                ChoDeXe.TrangThai = choDeXe.TrangThai;
                 _unitOfWork.ChoDeXeRepository.Update(ChoDeXe);
-                Save();
+                await Save();
             }
             else
             {

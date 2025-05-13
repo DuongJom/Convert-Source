@@ -88,7 +88,7 @@
     "Parameters": [
       {
         "Name": "choDeXe",
-        "Type": "HeThongBaiXe.Models.ChoDeXe",
+        "Type": "HeThongBaiXe.DTOs.TaoChoDeXeDto",
         "IsRequired": true
       }
     ],

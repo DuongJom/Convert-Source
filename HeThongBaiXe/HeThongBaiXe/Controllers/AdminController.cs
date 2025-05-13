@@ -45,14 +45,20 @@ namespace HeThongBaiXe.Controllers
         {
             var result = _choDeXeService.getChoDeXeById(id);
             if (result == null) return NotFound();
-            return Ok(result);
+            return Ok(new { choDeXe = result });
         }
 
         [HttpPost("cho-de-xe")]
-        public IActionResult CreateChoDeXe([FromBody] ChoDeXe choDeXe)
+        public IActionResult CreateChoDeXe([FromBody] TaoChoDeXeDto choDeXe)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            _choDeXeService.insertChoDeXe(choDeXe);
+
+            var choDeXeModel = new ChoDeXe
+            {
+                ViTri = choDeXe.ViTri,
+                TrangThai = "Trống"
+            };
+            _choDeXeService.insertChoDeXe(choDeXeModel);
             return Ok();
         }
 
@@ -61,7 +67,7 @@ namespace HeThongBaiXe.Controllers
         {
             if (id != choDeXe.Id) return BadRequest();
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            _choDeXeService.updateChoDeXe(id);
+            _choDeXeService.updateChoDeXe(id, choDeXe);
             return Ok();
         }
 

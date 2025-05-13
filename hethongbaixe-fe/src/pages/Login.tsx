@@ -26,9 +26,11 @@ const Login: React.FC<LoginProps> = ({ setUsername }) => {
 
       const data = await response.json();
       localStorage.setItem('token', JSON.stringify(data.accessToken));
-      setUsername(tenDangNhap);
-      localStorage.setItem('username', JSON.stringify(tenDangNhap));
-      navigate('/home');
+      setUsername(data.userData.tenDangNhap);
+      localStorage.setItem('username', JSON.stringify(data.userData.tenDangNhap));
+      localStorage.setItem('role', JSON.stringify(data.userData.role));
+      
+      data.userData.role === 'Admin' ? navigate('/admin/danh-sach-cho-de-xe') : navigate('/home');
     } catch (err: any) {
       setError(err.message);
     }

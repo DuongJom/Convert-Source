@@ -38,22 +38,8 @@ const ChoDeXeList: React.FC = () => {
         }
 
         const dataChoDe = await resChoDe.json();
-        setDanhSachChoDeXe(dataChoDe.danhSachCho); // Cập nhật danh sách chỗ đỗ trống
-        setDanhSachXe(dataChoDe.danhSachXe); // Cập nhật danh sách xe
-
-        // // Lấy danh sách phương tiện của người dùng
-        // const resXe = await fetch('https://localhost:7537/api/danhsachxe', {
-        //     method: 'GET',
-        //     headers: { 'Authorization': `Bearer ${token}` }
-        // });
-
-        // if (!resXe.ok) {
-        //     throw new Error('Không thể lấy dữ liệu phương tiện');
-        // }
-
-        // const dataXe = await resXe.json();
-        // setDanhSachXe(dataXe.danhSachXe); // Cập nhật danh sách xe
-
+        setDanhSachChoDeXe(dataChoDe.danhSachCho);
+        setDanhSachXe(dataChoDe.danhSachXe);
         } catch (error) {
         console.error(error);
         }

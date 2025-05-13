@@ -33,17 +33,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ChoDeXe"
+                "$ref": "#/components/schemas/TaoChoDeXeDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ChoDeXe"
+                "$ref": "#/components/schemas/TaoChoDeXeDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ChoDeXe"
+                "$ref": "#/components/schemas/TaoChoDeXeDto"
               }
             }
           }
@@ -690,6 +690,16 @@
             "nullable": true
           },
           "matKhau": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TaoChoDeXeDto": {
+        "type": "object",
+        "properties": {
+          "viTri": {
             "type": "string",
             "nullable": true
           }
