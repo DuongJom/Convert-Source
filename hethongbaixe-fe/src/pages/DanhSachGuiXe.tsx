@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface ChiTietGuiXe {
   id: number;
@@ -9,7 +10,8 @@ interface ChiTietGuiXe {
 
 const DanhSachGuiXe: React.FC = () => {
     const [danhSachGuiXe, setDanhSachGuiXe] = React.useState<ChiTietGuiXe[]>([]);
-    
+    const navigate = useNavigate();
+
     useEffect(() => {
         fetch('https://localhost:7537/api/danh-sach-gui-xe',{
             method: 'GET',
@@ -34,27 +36,7 @@ const DanhSachGuiXe: React.FC = () => {
     }, []);
 
   const handleLayXe = (id: number) => {
-    fetch(`https://localhost:7537/api/lay-xe/${id}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')?.replace(/"/g, '')}`,
-        }
-    })
-    .then((response) => {
-        if (!response.ok) {
-          alert('Lấy xe không thành công!');
-        }
-        return response.json();
-    })
-    .then(() => {
-        setDanhSachGuiXe(danhSachGuiXe.filter(item => item.id !== id));
-        alert('Lấy xe thành công!');
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-        alert('Lấy xe không thành công!');
-    });
+    navigate('/thanh-toan/' + id);
   };
 
   return (

@@ -15,6 +15,7 @@ import ChoDeXeList from './pages/ChoDeXeList';
 import DangKyPhuongTien from './pages/DangKyPhuongTien';
 import DanhSachGuiXe from './pages/DanhSachGuiXe';
 import DanhSachXe from './pages/DanhSachXe';
+import ThanhToan from './pages/ThanhToan';
 
 const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const isAuthenticated = !!localStorage.getItem('token');
@@ -92,7 +93,14 @@ const AppContent: React.FC = () => {
                 </PrivateRoute>
               }
             />
-            {/* Add more authenticated routes here */}
+            <Route
+              path='/thanh-toan/:id'
+              element={
+                <PrivateRoute>
+                  <ThanhToan />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </MainLayout>
       )}

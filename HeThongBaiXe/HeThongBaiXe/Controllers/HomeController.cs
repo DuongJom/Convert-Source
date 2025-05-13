@@ -151,7 +151,7 @@ namespace HeThongBaiXe.Controllers
         {
             var ct = _chiTietGuiXeService.GetById(chiTietGuiXeId);
             if (ct == null) return NotFound(new { message = "Không tìm thấy dữ liệu" });
-            return Ok(ct);
+            return Ok(new { data = ct });
         }
 
         // THỰC HIỆN THANH TOÁN
