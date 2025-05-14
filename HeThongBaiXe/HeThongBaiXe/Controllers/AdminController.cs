@@ -135,22 +135,22 @@ namespace HeThongBaiXe.Controllers
         }
 
         [HttpPost("thong-ke")]
-        public IActionResult ThongKe([FromQuery] string kieuThongKe, [FromQuery] DateTime? ngay, [FromQuery] int? thang, [FromQuery] int? nam)
+        public async Task<IActionResult> ThongKe([FromQuery] string kieuThongKe, [FromQuery] DateTime? ngay, [FromQuery] int? thang, [FromQuery] int? nam)
         {
             double ketQua = 0;
             switch (kieuThongKe)
             {
                 case "Ngay":
-                    if (ngay.HasValue) ketQua = _chiTietGuiXeService.ThongKeTheoNgay(ngay.Value);
+                    if (ngay.HasValue) ketQua = await _chiTietGuiXeService.ThongKeTheoNgay(ngay.Value);
                     break;
                 case "Thang":
-                    if (thang.HasValue && nam.HasValue) ketQua = _chiTietGuiXeService.ThongKeTheoThang(thang.Value, nam.Value);
+                    if (thang.HasValue && nam.HasValue) ketQua = await _chiTietGuiXeService.ThongKeTheoThang(thang.Value, nam.Value);
                     break;
                 case "Nam":
-                    if (nam.HasValue) ketQua = _chiTietGuiXeService.ThongKeTheoNam(nam.Value);
+                    if (nam.HasValue) ketQua = await _chiTietGuiXeService.ThongKeTheoNam(nam.Value);
                     break;
             }
-            return Ok(ketQua);
+            return Ok(new { doanhThu = ketQua });
         }
     }
 }

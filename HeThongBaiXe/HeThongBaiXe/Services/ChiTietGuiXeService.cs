@@ -13,9 +13,9 @@ namespace HeThongBaiXe.Services
         public Task TaoYeuCauLayXe(int chiTietGuiXeId, string phuongThucThanhToan);
         public Task DuyetLayXe(int chiTietGuiXeId);
         ChiTietGuiXe GetById(int id);
-        double ThongKeTheoNgay(DateTime ngay);
-        double ThongKeTheoThang(int thang, int nam);
-        double ThongKeTheoNam(int nam);
+        Task<double> ThongKeTheoNgay(DateTime ngay);
+        Task<double> ThongKeTheoThang(int thang, int nam);
+        Task<double> ThongKeTheoNam(int nam);
     }
 
     public class ChiTietGuiXeService : IChiTietGuiXeService
@@ -128,36 +128,36 @@ namespace HeThongBaiXe.Services
         {
             return _unitOfWork.ChiTietGuiXeRepository.GetById(id);
         }
-        public double ThongKeTheoNgay(DateTime ngay)
+        public async Task<double> ThongKeTheoNgay(DateTime ngay)
         {
-            var list = _context.HoaDons
+            var list = await _context.HoaDons
                 .Include(h => h.ChiTietGuiXe)
                 .Where(h => h.ChiTietGuiXe.NgayRa.HasValue &&
                             h.ChiTietGuiXe.NgayRa.Value.Date == ngay.Date)
-                .ToList();
+                .ToListAsync();
             return list.Sum(h => h.TongHoaDon);
         }
 
-        public double ThongKeTheoThang(int thang, int nam)
+        public async Task<double> ThongKeTheoThang(int thang, int nam)
         {
-            var list = _context.HoaDons
+            var list = await _context.HoaDons
                 .Include(h => h.ChiTietGuiXe)
                 .Where(h => h.ChiTietGuiXe != null &&
                             h.ChiTietGuiXe.NgayRa.HasValue &&
                             h.ChiTietGuiXe.NgayRa.Value.Month == thang &&
                             h.ChiTietGuiXe.NgayRa.Value.Year == nam)
-                .ToList();
+                .ToListAsync();
             return list.Sum(h => h.TongHoaDon);
         }
 
-        public double ThongKeTheoNam(int nam)
+        public async Task<double> ThongKeTheoNam(int nam)
         {
-            var list = _context.HoaDons
+            var list = await _context.HoaDons
                 .Include(h => h.ChiTietGuiXe)
                 .Where(h => h.ChiTietGuiXe != null &&
                             h.ChiTietGuiXe.NgayRa.HasValue &&
                             h.ChiTietGuiXe.NgayRa.Value.Year == nam)
-                .ToList();
+                .ToListAsync();
 
             return list.Sum(h => h.TongHoaDon);
         }

@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 const ThongKeDoanhThu: React.FC = () => {
     const [kieuThongKe, setKieuThongKe] = useState<'Ngay' | 'Thang' | 'Nam'>('Ngay');
     const [ngay, setNgay] = useState('');
-    const [thang, setThang] = useState<number | ''>('');
-    const [nam, setNam] = useState<number | ''>('');
+    const [thang, setThang] = useState<number>(0);
+    const [nam, setNam] = useState<number>(0);
     const [ketQua, setKetQua] = useState<number | null>(null);
 
     const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -12,18 +12,35 @@ const ThongKeDoanhThu: React.FC = () => {
         setKieuThongKe(value);
         // Reset fields
         setNgay('');
-        setThang('');
-        setNam('');
+        setThang(0);
+        setNam(0);
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        let apiUrl = "https://localhost:7537/api/admin/thong-ke";
 
-        // Giả lập tính doanh thu (bạn thay bằng gọi API thực tế)
-        console.log('Gửi dữ liệu:', { kieuThongKe, ngay, thang, nam });
+        const params = new URLSearchParams({
+            kieuThongKe: kieuThongKe,
+            ngay: ngay,
+            thang: thang.toString(),
+            nam: nam.toString()
+        });
 
-        // Giả lập kết quả
-        setKetQua(5000000); // ví dụ: 5 triệu VNĐ
+        const res = await fetch(`${apiUrl}?${params.toString()}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')?.replace(/"/g, '')}`,
+            }
+        });
+
+        if(!res.ok){
+            console.log("Lỗi khi lấy dữ liệu thống kê");
+        }
+
+        const data = await res.json();
+        setKetQua(data.doanhThu);
     };
 
     return (
