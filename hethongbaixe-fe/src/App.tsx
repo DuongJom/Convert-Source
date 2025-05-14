@@ -17,7 +17,6 @@ import DanhSachGuiXe from './pages/DanhSachGuiXe';
 import DanhSachXe from './pages/DanhSachXe';
 import ThanhToan from './pages/ThanhToan';
 import ListChoDeXe from './pages/ListChoDeXe';
-import CreateChoDeXe from './pages/CreateChoDeXe';
 import EditChoDeXe from './pages/EditChoDeXe';
 import ListBangPhiGuiXe from './pages/ListBangPhiGuiXe';
 
@@ -111,14 +110,6 @@ const AppContent: React.FC = () => {
               element={
                 <PrivateRoute>
                   <ListChoDeXe />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path='/admin/tao-cho-de-xe'
-              element={
-                <PrivateRoute>
-                  <CreateChoDeXe />
                 </PrivateRoute>
               }
             />

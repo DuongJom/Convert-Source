@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+.custom-modal-dialog {
+  max-width: 450px;
+  width: auto;
+}
+
+.modal-content {
+  animation: zoomIn 0.2s ease-in-out;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+

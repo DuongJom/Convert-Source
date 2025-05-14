@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import CreateChoDeXe from "./CreateChoDeXe";
 
 interface ChoDeXe {
   id: number;
@@ -10,43 +11,49 @@ interface ChoDeXe {
 const ChoDeXeList: React.FC = () => {
   const [data, setData] = useState<ChoDeXe[]>([]);
   const [trangThai, setTrangThai] = useState<string>('');
+  const [showModal, setShowModal] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const url = trangThai
+  const fetchData = useCallback(async () => {
+    try {
+      const url = trangThai
           ? `https://localhost:7537/api/admin/cho-de-xe?trangThai=${encodeURIComponent(trangThai)}`
           : `https://localhost:7537/api/admin/cho-de-xe`;
 
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')?.replace(/"/g, '')}`,
-          }
-        });
-
-        if (response.ok) {
-          const result = await response.json();
-          const sortedData = (result.data || result).sort((a: ChoDeXe, b: ChoDeXe) =>
-            a.viTri.localeCompare(b.viTri, 'vi', { numeric: true, sensitivity: 'base' })
-          );
-          setData(sortedData);
-        } else {
-          alert('Lỗi khi tải danh sách!');
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')?.replace(/"/g, '')}`,
         }
-      } catch (error) {
-        alert('Lỗi kết nối server!');
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        const sortedData = (result.data || result).sort((a: ChoDeXe, b: ChoDeXe) =>
+            a.viTri.localeCompare(b.viTri, 'vi', {numeric: true, sensitivity: 'base'})
+        );
+        setData(sortedData);
+      } else {
+        alert('Lỗi khi tải danh sách!');
       }
-    };
-    fetchData();
+    } catch (error) {
+      alert('Lỗi kết nối server!');
+    }
   }, [trangThai]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   const handleEdit = (id: number) => {
     navigate(`/admin/cap-nhat-cho-de-xe/${id}`);
   };
 
+  const onAddSuccess = () => {
+    setShowModal(false);
+    fetchData();
+  }
   return (
     <div className="container py-4">
       <h2>Danh sách chỗ để xe</h2>
@@ -63,7 +70,9 @@ const ChoDeXeList: React.FC = () => {
           <option value="Đã đầy">Đã đầy</option>
         </select>
         <div>
-          <a href="/admin/tao-cho-de-xe" className="btn btn-success">+ Tạo mới</a>
+          <button className="btn btn-success" onClick={() => setShowModal(true)}>
+            <i className="bi bi-plus-circle me-1"></i> Tạo mới
+          </button>
         </div>
       </div>
 
@@ -98,6 +107,31 @@ const ChoDeXeList: React.FC = () => {
           )}
         </tbody>
       </table>
+
+      {showModal && (
+          <div
+              className="modal fade show d-block"
+              tabIndex={-1}
+              style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}
+          >
+            <div className="modal-dialog modal-dialog-centered custom-modal-dialog">
+              <div className="modal-content rounded-4 shadow p-3 border-0">
+                <div className="modal-header border-0 pb-2">
+                  <h5 className="modal-title d-flex align-items-center text-primary fw-bold">
+                    <i className="bi bi-plus-circle me-2"></i> Tạo chỗ đỗ xe
+                  </h5>
+                  <button type="button" className="btn-close" onClick={() => setShowModal(false)} />
+                </div>
+                <div className="modal-body px-3">
+                  <CreateChoDeXe
+                      onSuccess={onAddSuccess}
+                      onCancel={() => setShowModal(false)}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+      )}
     </div>
   );
 };
