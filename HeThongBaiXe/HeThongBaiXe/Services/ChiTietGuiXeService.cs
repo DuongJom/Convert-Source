@@ -63,7 +63,7 @@ namespace HeThongBaiXe.Services
 
             var danhSachGuiXe = _unitOfWork.ChiTietGuiXeRepository
                                 .GetAll()
-                                .Where(x => danhSachXe.Contains(x.PhuongTienId) && (x.TrangThai == "ChuaLay" || string.IsNullOrWhiteSpace(x.TrangThai)))
+                                .Where(x => danhSachXe.Contains(x.PhuongTienId))
                                 .ToList();
 
             return danhSachGuiXe;

@@ -68,27 +68,8 @@ const ThanhToan: React.FC = () => {
       });
 
       if (res.ok) {
-        alert('Thanh toán thành công!');
-        fetch(`https://localhost:7537/api/lay-xe/${id}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')?.replace(/"/g, '')}`,
-            }
-        })
-        .then((response) => {
-            if (!response.ok) {
-                alert('Lấy xe không thành công!');
-            }
-            return response.json();
-        })
-        .then(() => {
-            alert('Lấy xe thành công!');
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-            alert('Lấy xe không thành công!');
-        })
+        const data = await res.json();
+        alert(data.message);
         navigate('/lich-su-gui-xe');
       } else {
         alert('Thanh toán thất bại');

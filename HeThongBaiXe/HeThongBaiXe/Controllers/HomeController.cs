@@ -60,7 +60,6 @@ namespace HeThongBaiXe.Controllers
 
         // ĐĂNG KÝ XE
         [HttpPost("dang-ky-xe")]
-        //[Authorize(Roles = "KhachHang")]
         public IActionResult DangKyXe([FromBody] DangKyXeDto model)
         {
             var userId = _jwtService.GetUserIdFromClaims(User);
@@ -85,7 +84,6 @@ namespace HeThongBaiXe.Controllers
 
         // CHỖ ĐỖ TRỐNG
         [HttpGet("cho-de-trong")]
-        //[Authorize(Roles = "KhachHang")]
         public IActionResult ChoDeTrong()
         {
             var userId = _jwtService.GetUserIdFromClaims(User);
@@ -156,7 +154,6 @@ namespace HeThongBaiXe.Controllers
 
         // THỰC HIỆN THANH TOÁN
         [HttpPost("thanh-toan")]
-        [Authorize(Roles = "KhachHang")]
         public IActionResult ThanhToan([FromBody] ThanhToanDto dto)
         {
             _chiTietGuiXeService.TaoYeuCauLayXe(dto.ChiTietGuiXeId, dto.PhuongThuc);

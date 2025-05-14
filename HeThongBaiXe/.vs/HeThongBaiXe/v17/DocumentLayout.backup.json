@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\Github\\Convert-Source\\HeThongBaiXe\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|d:\\github\\convert-source\\hethongbaixe\\hethongbaixe\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|solutionrelative:hethongbaixe\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|d:\\github\\convert-source\\hethongbaixe\\hethongbaixe\\services\\chitietguixeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|solutionrelative:hethongbaixe\\services\\chitietguixeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|d:\\github\\convert-source\\hethongbaixe\\hethongbaixe\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|solutionrelative:hethongbaixe\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|d:\\github\\convert-source\\hethongbaixe\\hethongbaixe\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|solutionrelative:hethongbaixe\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|d:\\github\\convert-source\\hethongbaixe\\hethongbaixe\\services\\bangphiguixeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|d:\\github\\convert-source\\hethongbaixe\\hethongbaixe\\services\\chodexeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|solutionrelative:hethongbaixe\\services\\chodexeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|d:\\github\\convert-source\\hethongbaixe\\hethongbaixe\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|solutionrelative:hethongbaixe\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{545CAB22-3CDC-4297-A6B1-D1D0FCDFC925}|HeThongBaiXe\\HeThongBaiXe.csproj|d:\\github\\convert-source\\hethongbaixe\\hethongbaixe\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 30,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,20 +62,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "ChiTietGuiXeService.cs",
               "DocumentMoniker": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Services\\ChiTietGuiXeService.cs",
               "RelativeDocumentMoniker": "HeThongBaiXe\\Services\\ChiTietGuiXeService.cs",
               "ToolTip": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Services\\ChiTietGuiXeService.cs",
               "RelativeToolTip": "HeThongBaiXe\\Services\\ChiTietGuiXeService.cs",
-              "ViewState": "AgIAAIMAAAAAAAAAAAAgwJ8AAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAiwEIAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-14T02:35:27.403Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "BangPhiGuiXeService.cs",
               "DocumentMoniker": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Services\\BangPhiGuiXeService.cs",
               "RelativeDocumentMoniker": "HeThongBaiXe\\Services\\BangPhiGuiXeService.cs",
@@ -87,7 +87,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ChoDeXeService.cs",
               "DocumentMoniker": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Services\\ChoDeXeService.cs",
               "RelativeDocumentMoniker": "HeThongBaiXe\\Services\\ChoDeXeService.cs",
@@ -99,25 +99,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "HeThongBaiXe\\Controllers\\HomeController.cs",
               "ToolTip": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Controllers\\HomeController.cs",
               "RelativeToolTip": "HeThongBaiXe\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAowCYAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAcwIUAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T07:14:27.16Z"
+              "WhenOpened": "2025-05-13T07:14:27.16Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "AdminController.cs",
               "DocumentMoniker": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "HeThongBaiXe\\Controllers\\AdminController.cs",
               "ToolTip": "D:\\Github\\Convert-Source\\HeThongBaiXe\\HeThongBaiXe\\Controllers\\AdminController.cs",
               "RelativeToolTip": "HeThongBaiXe\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAH4AAAAAAAAAAAAIwJoAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAxwIsAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-12T08:34:35.719Z",
               "EditorCaption": ""
