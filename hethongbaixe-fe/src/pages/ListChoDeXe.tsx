@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import { useNavigate } from 'react-router-dom';
 import CreateChoDeXe from "./CreateChoDeXe";
+import EditChoDeXe from "./EditChoDeXe";
 
 interface ChoDeXe {
   id: number;
@@ -12,7 +12,8 @@ const ChoDeXeList: React.FC = () => {
   const [data, setData] = useState<ChoDeXe[]>([]);
   const [trangThai, setTrangThai] = useState<string>('');
   const [showModal, setShowModal] = useState<boolean>(false);
-  const navigate = useNavigate();
+  const [editId, setEditId] = useState<number | null>(null);
+  const [showEdit, setShowEdit] = useState<boolean>(false);
 
   const fetchData = useCallback(async () => {
     try {
@@ -47,13 +48,26 @@ const ChoDeXeList: React.FC = () => {
   }, [fetchData]);
 
   const handleEdit = (id: number) => {
-    navigate(`/admin/cap-nhat-cho-de-xe/${id}`);
+    setEditId(id);
+    setShowEdit(true);
   };
 
   const onAddSuccess = () => {
     setShowModal(false);
     fetchData();
   }
+
+  const onEditSuccess = () => {
+    setShowEdit(false);
+    setEditId(null);
+    fetchData();
+  };
+
+  const onEditCancel = () => {
+    setShowEdit(false);
+    setEditId(null);
+  };
+
   return (
     <div className="container py-4">
       <h2>Danh sách chỗ đỗ xe</h2>
@@ -127,6 +141,28 @@ const ChoDeXeList: React.FC = () => {
                       onSuccess={onAddSuccess}
                       onCancel={() => setShowModal(false)}
                   />
+                </div>
+              </div>
+            </div>
+          </div>
+      )}
+
+      {showEdit && editId !== null && (
+          <div
+              className="modal fade show d-block"
+              tabIndex={-1}
+              style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}
+          >
+            <div className="modal-dialog modal-dialog-centered custom-modal-dialog">
+              <div className="modal-content rounded-4 shadow p-3 border-0">
+                <div className="modal-header border-0 pb-2">
+                  <h5 className="modal-title d-flex align-items-center text-primary fw-bold">
+                    <i className="bi bi-pencil-square me-2"></i> Cập nhật chỗ đỗ xe
+                  </h5>
+                  <button type="button" className="btn-close" onClick={onEditCancel} />
+                </div>
+                <div className="modal-body px-3">
+                  <EditChoDeXe id={editId} onSuccess={onEditSuccess} onCancel={onEditCancel} />
                 </div>
               </div>
             </div>

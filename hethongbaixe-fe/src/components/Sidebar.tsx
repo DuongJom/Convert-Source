@@ -20,7 +20,10 @@ const Sidebar: React.FC = () => {
 
   const adminLinks = [
     { to: '/admin/danh-sach-cho-de-xe', label: 'Danh sách chỗ đỗ xe', icon: 'bi-list-check' },
-    { to: '/admin/bang-phi-gui-xe', label: 'Bảng phí gửi xe', icon: 'bi-cash-coin' }  
+    { to: '/admin/bang-phi-gui-xe', label: 'Bảng phí gửi xe', icon: 'bi-cash-coin' },
+    { to: '/admin/lich-su-gui-xe', label: 'Lịch sử gửi xe', icon: 'bi-clock-history' },
+    { to: '/admin/danh-sach-yeu-cau-duyet', label: 'Yêu cầu duyệt', icon: 'bi-hourglass-split'},
+    { to: '/admin/thong-ke-doanh-thu', label: 'Thống kê doanh thu', icon: 'bi-bar-chart-line' }
   ];
 
   const isAdmin = (role?.replace(/"/g, '') === "Admin");

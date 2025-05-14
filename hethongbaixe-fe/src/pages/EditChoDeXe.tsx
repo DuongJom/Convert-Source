@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
 
 interface ChoDeXe {
   id: number;
@@ -7,9 +6,13 @@ interface ChoDeXe {
   trangThai: string;
 }
 
-const EditChoDeXe: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
+interface EditChoDeXeProps {
+  id: number;
+  onSuccess: () => void;
+  onCancel: () => void;
+}
+
+const EditChoDeXe: React.FC<EditChoDeXeProps> = ({ id, onSuccess, onCancel }) => {
   const [formData, setFormData] = useState<ChoDeXe>({
     id: 0,
     viTri: '',
@@ -20,30 +23,29 @@ const EditChoDeXe: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    // Fetch existing ChoDeXe by id
-    fetch(`https:localhost:7537/api/admin/cho-de-xe/${id}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')?.replace(/"/g, '')}`,
-        },
+    fetch(`https://localhost:7537/api/admin/cho-de-xe/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')?.replace(/"/g, '')}`,
+      },
     })
-      .then(res => res.json())
-      .then(data => {
-        setFormData(data.choDeXe);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error('Lỗi tải dữ liệu:', err);
-        setLoading(false);
-      });
+        .then(res => res.json())
+        .then(data => {
+          setFormData(data.choDeXe || data);
+          setLoading(false);
+        })
+        .catch(err => {
+          console.error('Lỗi tải dữ liệu:', err);
+          setLoading(false);
+        });
   }, [id]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-      setFormData(prev => ({
-        ...prev,
-        [e.target.name]: e.target.value,
-      }));
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const validate = () => {
@@ -58,46 +60,44 @@ const EditChoDeXe: React.FC = () => {
     e.preventDefault();
     if (!validate()) return;
 
-    fetch(`https:localhost:7537/api/admin/cho-de-xe/${formData.id}`, {
+    fetch(`https://localhost:7537/api/admin/cho-de-xe/${formData.id}`, {
       method: 'PUT',
-      headers: { 
+      headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('token')?.replace(/"/g, '')}`
       },
       body: JSON.stringify(formData),
     })
-      .then(res => {
-        if (res.ok) {
-          navigate('/admin/danh-sach-cho-de-xe');
-        } else {
-          console.error('Cập nhật thất bại');
-        }
-      })
-      .catch(err => console.error('Lỗi khi gửi dữ liệu:', err));
+        .then(res => {
+          if (res.ok) {
+            onSuccess(); // Callback khi thành công
+          } else {
+            console.error('Cập nhật thất bại');
+          }
+        })
+        .catch(err => console.error('Lỗi khi gửi dữ liệu:', err));
   };
 
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center vh-100">
-        <div className="spinner-border text-primary" role="status" />
-      </div>
+        <div className="text-center py-4">
+          <div className="spinner-border text-primary" role="status" />
+        </div>
     );
   }
 
   return (
-    <div className="container d-flex justify-content-center">
-      <div className="card shadow p-4 w-100" style={{ maxWidth: 500 }}>
-        <h3 className="mb-2 text-center">Chỉnh sửa chỗ để xe</h3>
+      <div>
         <form onSubmit={handleSubmit} noValidate>
           <div className="mb-3">
             <label htmlFor="viTri" className="form-label">Vị trí</label>
             <input
-              type="text"
-              id="viTri"
-              name="viTri"
-              className={`form-control ${errors.viTri ? 'is-invalid' : ''}`}
-              value={formData.viTri}
-              onChange={handleChange}
+                type="text"
+                id="viTri"
+                name="viTri"
+                className={`form-control ${errors.viTri ? 'is-invalid' : ''}`}
+                value={formData.viTri}
+                onChange={handleChange}
             />
             <div className="invalid-feedback">{errors.viTri}</div>
           </div>
@@ -111,26 +111,19 @@ const EditChoDeXe: React.FC = () => {
                 value={formData.trangThai}
                 onChange={handleChange}
             >
-                <option value="">-- Chọn trạng thái --</option>
-                <option value="Trống">Trống</option>
-                <option value="Đã đầy">Đã đầy</option>
+              <option value="">-- Chọn trạng thái --</option>
+              <option value="Trống">Trống</option>
+              <option value="Đã đầy">Đã đầy</option>
             </select>
             <div className="invalid-feedback">{errors.trangThai}</div>
-            </div>
+          </div>
 
           <div className="d-flex justify-content-between">
             <button type="submit" className="btn btn-primary w-50 me-2">Lưu</button>
-            <button
-              type="button"
-              className="btn btn-outline-secondary w-50"
-              onClick={() => navigate('/cho-de-xe')}
-            >
-              Quay lại
-            </button>
+            <button type="button" className="btn btn-outline-secondary w-50" onClick={onCancel}>Hủy</button>
           </div>
         </form>
       </div>
-    </div>
   );
 };
 

@@ -17,8 +17,10 @@ import DanhSachGuiXe from './pages/DanhSachGuiXe';
 import DanhSachXe from './pages/DanhSachXe';
 import ThanhToan from './pages/ThanhToan';
 import ListChoDeXe from './pages/ListChoDeXe';
-import EditChoDeXe from './pages/EditChoDeXe';
 import ListBangPhiGuiXe from './pages/ListBangPhiGuiXe';
+import LichSuGuiXe from "./pages/LichSuGuiXe";
+import DanhSachYeuCauDuyet from "./pages/ListYeuCauDuyet";
+import ThongKeDoanhThu from "./pages/ThongKeDoanhThu";
 
 const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const isAuthenticated = !!localStorage.getItem('token');
@@ -114,14 +116,6 @@ const AppContent: React.FC = () => {
               }
             />
             <Route
-              path='/admin/cap-nhat-cho-de-xe/:id'
-              element={
-                <PrivateRoute>
-                  <EditChoDeXe />
-                </PrivateRoute>
-              }
-            />
-            <Route
               path='/admin/bang-phi-gui-xe'
               element={
                 <PrivateRoute>
@@ -129,6 +123,30 @@ const AppContent: React.FC = () => {
                 </PrivateRoute>
               }
             />
+            <Route
+              path='/admin/lich-su-gui-xe'
+              element={
+              <PrivateRoute>
+                <LichSuGuiXe />
+              </PrivateRoute>
+              }
+            />
+            <Route
+              path='/admin/danh-sach-yeu-cau-duyet'
+              element={
+              <PrivateRoute>
+                <DanhSachYeuCauDuyet />
+              </PrivateRoute>
+              }
+            />
+            <Route
+              path='/admin/thong-ke-doanh-thu'
+              element={
+              <PrivateRoute>
+                <ThongKeDoanhThu />
+              </PrivateRoute>
+              }
+              />
           </Routes>
         </MainLayout>
       )}
