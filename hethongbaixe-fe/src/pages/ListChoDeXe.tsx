@@ -56,7 +56,7 @@ const ChoDeXeList: React.FC = () => {
   }
   return (
     <div className="container py-4">
-      <h2>Danh sách chỗ để xe</h2>
+      <h2>Danh sách chỗ đỗ xe</h2>
 
       <div className="mb-3 d-flex align-items-center gap-2">
         <select
